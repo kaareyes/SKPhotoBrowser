@@ -477,6 +477,10 @@ internal extension SKPhotoBrowser {
             }
         }
     }
+    
+    @objc func actionEditButtonPressed(){
+        print("shared press")
+    }
    
     @objc func actionButtonPressed(ignoreAndShare: Bool) {
         delegate?.willShowActionSheet?(currentPageIndex)
