@@ -89,7 +89,7 @@ import Foundation
     
     
     
-    @objc optional func editSelectedImage(image : UIImage)
+    @objc optional func editSelectedImage(image : UIImage, photoBrowser : SKPhotoBrowser)
     
     
 }

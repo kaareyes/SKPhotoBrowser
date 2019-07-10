@@ -483,7 +483,7 @@ internal extension SKPhotoBrowser {
             return
         }
         let photo = photos[currentPageIndex]
-        delegate?.editSelectedImage?(image: photo.underlyingImage)
+        delegate?.editSelectedImage?(image: photo.underlyingImage,photoBrowser: self)
     }
    
     @objc func actionButtonPressed(ignoreAndShare: Bool) {
