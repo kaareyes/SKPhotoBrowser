@@ -479,7 +479,11 @@ internal extension SKPhotoBrowser {
     }
     
     @objc func actionEditButtonPressed(){
-        print("shared press")
+        guard photos.count > 0 else {
+            return
+        }
+        let photo = photos[currentPageIndex]
+        delegate?.editSelectedImage?(image: photo.underlyingImage)
     }
    
     @objc func actionButtonPressed(ignoreAndShare: Bool) {

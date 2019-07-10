@@ -86,5 +86,11 @@ import Foundation
      - Parameter index: the index of the photo
      */
     @objc optional func captionViewForPhotoAtIndex(index: Int) -> SKCaptionView?
+    
+    
+    
+    @objc optional func editSelectedImage(image : UIImage)
+    
+    
 }
 
