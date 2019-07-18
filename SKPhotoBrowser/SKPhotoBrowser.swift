@@ -482,8 +482,9 @@ internal extension SKPhotoBrowser {
         guard photos.count > 0 else {
             return
         }
-        let photo = photos[currentPageIndex]
-        delegate?.editSelectedImage?(image: photo.underlyingImage,photoBrowser: self)
+        guard let photo = photos[currentPageIndex] as? SKPhotoProtocol,
+            let imageUrl = photo.underlyingImage else {return}
+        delegate?.editSelectedImage?(image: imageUrl,photoBrowser: self)
     }
    
     @objc func actionButtonPressed(ignoreAndShare: Bool) {
