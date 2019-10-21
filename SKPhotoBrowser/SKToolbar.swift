@@ -27,6 +27,7 @@ class SKToolbar: UIToolbar {
     convenience init(frame: CGRect, browser: SKPhotoBrowser) {
         self.init(frame: frame)
         self.browser = browser
+        self.backgroundColor = .green
         
         setupApperance()
         setupToolbar()
