@@ -61,7 +61,7 @@ class SKToolbar: UIToolbar {
 
 private extension SKToolbar {
     func setupApperance() {
-        backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundColor = UIColor.black.withAlphaComponent(0.25)
         clipsToBounds = true
         isTranslucent = true
         setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
@@ -73,7 +73,7 @@ private extension SKToolbar {
         
         /* ADD EDIT IMAGE BUTTON START*/
         let image = UIImage(named: "SKPhotoBrowser.bundle/images/edit_pencil",
-                            in: bundle, compatibleWith: nil)?.imageWithBorder(width: 2, color: .red) ?? UIImage()
+                            in: bundle, compatibleWith: nil) ?? UIImage()
         toolEditActionButton = UIBarButtonItem(image: image, style: .plain, target: browser, action: #selector(SKPhotoBrowser.actionEditButtonPressed))
         toolEditActionButton.tintColor = UIColor.white
         /* ADD EDIT IMAGE BUTTON END*/
