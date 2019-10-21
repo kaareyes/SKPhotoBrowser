@@ -73,7 +73,7 @@ private extension SKToolbar {
         
         /* ADD EDIT IMAGE BUTTON START*/
         let image = UIImage(named: "SKPhotoBrowser.bundle/images/edit_pencil",
-            in: bundle, compatibleWith: nil) ?? UIImage()
+                            in: bundle, compatibleWith: nil)?.imageWithBorder(width: 2, color: .red) ?? UIImage()
         toolEditActionButton = UIBarButtonItem(image: image, style: .plain, target: browser, action: #selector(SKPhotoBrowser.actionEditButtonPressed))
         toolEditActionButton.tintColor = UIColor.white
         /* ADD EDIT IMAGE BUTTON END*/
@@ -111,4 +111,20 @@ extension UIBarButtonItem {
         return frame?.origin.x
     }
     
+}
+extension UIImage {
+    func imageWithBorder(width: CGFloat, color: UIColor) -> UIImage? {
+        let square = CGSize(width: min(size.width, size.height) + width * 2, height: min(size.width, size.height) + width * 2)
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
+        imageView.contentMode = .center
+        imageView.image = self
+        imageView.layer.borderWidth = width
+        imageView.layer.borderColor = color.cgColor
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
 }
