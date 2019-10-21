@@ -27,7 +27,6 @@ class SKToolbar: UIToolbar {
     convenience init(frame: CGRect, browser: SKPhotoBrowser) {
         self.init(frame: frame)
         self.browser = browser
-        self.backgroundColor = .green
         
         setupApperance()
         setupToolbar()
@@ -62,7 +61,7 @@ class SKToolbar: UIToolbar {
 
 private extension SKToolbar {
     func setupApperance() {
-        backgroundColor = .clear
+        backgroundColor = .green
         clipsToBounds = true
         isTranslucent = true
         setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
