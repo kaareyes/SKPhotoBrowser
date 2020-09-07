@@ -77,6 +77,7 @@ open class SKPhotoBrowser: UIViewController {
         self.photos.forEach { $0.checkCache() }
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
+        print("public convenience init(originImage AMIGO pogi")
     }
     
     public convenience init(photos: [SKPhotoProtocol], initialPageIndex: Int) {
