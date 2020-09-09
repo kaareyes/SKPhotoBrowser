@@ -77,7 +77,7 @@ open class SKPhotoBrowser: UIViewController {
         self.photos.forEach { $0.checkCache() }
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
-        print("public convenience init(originImage AMIGO pogi")
+
     }
     
     public convenience init(photos: [SKPhotoProtocol], initialPageIndex: Int) {
@@ -88,6 +88,7 @@ open class SKPhotoBrowser: UIViewController {
         self.initPageIndex = self.currentPageIndex
         animator.senderOriginImage = photos[currentPageIndex].underlyingImage
         animator.senderViewForAnimation = photos[currentPageIndex] as? UIView
+
     }
 
     deinit {
@@ -120,7 +121,6 @@ open class SKPhotoBrowser: UIViewController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         reloadData()
-        
         var i = 0
         for photo: SKPhotoProtocol in photos {
             photo.index = i
@@ -486,6 +486,7 @@ internal extension SKPhotoBrowser {
         guard let photo = photos[currentPageIndex] as? SKPhotoProtocol,
             let imageUrl = photo.underlyingImage else {return}
         delegate?.editSelectedImage?(image: imageUrl,photoBrowser: self)
+        delegate?.editSelectedImage?(image: imageUrl, photoBrowser: self, photo: photo as! SKPhoto)
     }
    
     @objc func actionButtonPressed(ignoreAndShare: Bool) {
@@ -611,6 +612,7 @@ private extension SKPhotoBrowser {
 // MARK: - UIScrollView Delegate
 
 extension SKPhotoBrowser: UIScrollViewDelegate {
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isViewActive else { return }
         guard !isPerformingLayout else { return }
@@ -639,4 +641,5 @@ extension SKPhotoBrowser: UIScrollViewDelegate {
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         isEndAnimationByToolBar = true
     }
+    
 }

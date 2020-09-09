@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+public enum SKPhotoFileType : String {
+    case image  = "image"
+    case video  = "video"
+    case pdf    = "pdf"
+    case audio  = "audio"
+}
+
 @objc public protocol SKPhotoProtocol: NSObjectProtocol {
     var index: Int { get set }
     var underlyingImage: UIImage! { get }
@@ -25,6 +33,9 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
     open var contentMode: UIView.ContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = false
     open var photoURL: String!
+    open var dataFileURL : String?
+    open var fileType : SKPhotoFileType?
+    
 
     override init() {
         super.init()
@@ -33,6 +44,13 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
     convenience init(image: UIImage) {
         self.init()
         underlyingImage = image
+    }
+    
+   convenience init(url : String,fileUrl : String, fileType : SKPhotoFileType) {
+        self.init()
+        self.photoURL = url
+        self.dataFileURL = fileUrl
+        self.fileType = fileType
     }
     
     convenience init(url: String) {
